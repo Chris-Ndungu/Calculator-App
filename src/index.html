@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
+
+		<link rel="icon" type="./image/png" sizes="32x32" href="../images/favicon-32x32.png" />
+
+		<title>Calculator App</title>
+
+		<link rel="stylesheet" href="./css/style.css" />
+		<script src="./js/index.js" defer></script>
+	</head>
+	<body>
+		<header class="primary-header">
+			<div class="navigation">
+				<div>
+					<h2 class="navigation-text">calc</h2>
+				</div>
+				<div class="navigation-container">
+					<p>THEME</p>
+					<div class="toggle-switch-container">
+						<label for="">1 2 3</label>
+						<div id="theme-select" class="tri-state-toggle">
+							<input class="toggle-switch" type="radio" name="toggle" id="one" value="one" />
+							<input class="toggle-switch" type="radio" name="toggle" id="two" value="two" />
+							<input class="toggle-switch" type="radio" name="toggle" id="three" value="three" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<div class="calculator">
+				<div class="display-label">0</div>
+				<div class="container">
+					<div class="container-keypad">
+						<button data-key="plus" data-type="operator">+</button>
+						<button data-key="minus" data-type="operator">-</button>
+						<button data-key="times" data-type="operator">x</button>
+						<button data-key="divide" data-type="operator">/</button>
+						<button data-key="1" data-type="number">1</button>
+						<button data-key="2" data-type="number">2</button>
+						<button data-key="3" data-type="number">3</button>
+						<button data-key="4" data-type="number">4</button>
+						<button data-key="5" data-type="number">5</button>
+						<button data-key="6" data-type="number">6</button>
+						<button data-key="7" data-type="number">7</button>
+						<button data-key="8" data-type="number">8</button>
+						<button data-key="9" data-type="number">9</button>
+						<button data-key="0" data-type="number">0</button>
+						<button class="decimal" data-type="number">.</button>
+						<button class="delete-key" data-type="delete">DEL</button>
+					</div>
+					<div class="container-button">
+						<button type="reset" class="cont-button reset" data-type="clear">RESET</button>
+						<button class="cont-button equals" data-type="equal">=</button>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
