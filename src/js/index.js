@@ -1,7 +1,42 @@
 // THEME
+const firstTheme = document.querySelector("#one");
+const secondTheme = document.querySelector("#two");
+const thirdTheme = document.querySelector("#three");
+
+const toggle = document.querySelector(".toggle-switch");
+const dataVisible = toggle.getAttribute("data-visible");
+
+firstTheme.addEventListener("change", () => {
+	firstTheme.setAttribute("data-visible", true);
+	secondTheme.setAttribute("data-visible", false);
+	thirdTheme.setAttribute("data-visible", false);
+
+	document.querySelector("body").classList.remove("two");
+	document.querySelector("body").classList.remove("three");
+});
+
+secondTheme.addEventListener("change", () => {
+	secondTheme.setAttribute("data-visible", true);
+	document.querySelector("body").classList.add("two");
+
+	firstTheme.setAttribute("data-visible", false);
+	document.querySelector("body").classList.remove("one");
+
+	thirdTheme.setAttribute("data-visible", false);
+	document.querySelector("body").classList.remove("three");
+});
+thirdTheme.addEventListener("change", () => {
+	firstTheme.setAttribute("data-visible", false);
+	secondTheme.setAttribute("data-visible", false);
+	thirdTheme.setAttribute("data-visible", true);
+
+	document.querySelector("body").classList.add("three");
+
+	document.querySelector("body").classList.remove("one");
+	document.querySelector("body").classList.remove("two");
+});
 
 // CALCULATOR
-
 const calculator = document.querySelector(".calculator");
 const keys = calculator.querySelector(".container");
 const display = calculator.querySelector(".display-label");

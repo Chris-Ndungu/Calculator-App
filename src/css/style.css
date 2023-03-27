@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
+
 *,
 *::after,
 *::before {
@@ -8,21 +10,25 @@
 
 :root {
     /* Theme 1 */
-    --main-background-1: hsl(222, 26%, 31%);
+    --main-background: hsl(222, 26%, 31%);
     --toggle-background-keypad: hsl(223, 31%, 20%);
     --screen-background: hsl(224, 36%, 15%);
 
-    --blue-key-background: hsl(225, 21%, 49%);
-    --blue-key-shadow: hsl(224, 28%, 35%);
-    --red-toggle-key-background: hsl(6, 63%, 50%);
-    --red-key-shadow: hsl(6, 70%, 34%);
-    --orange-key-background: hsl(30, 25%, 89%);
-    --orange-key-shadow: hsl(28, 16%, 65%);
+    /* Keys */
+    --del-reset-background: hsl(225, 21%, 49%);
+    --del-reset-shadow: hsl(224, 28%, 35%);
 
-    --text-grayish-blue: hsl(221, 14%, 31%);
+    --toggle-key-background: hsl(6, 63%, 50%);
+    --equals-key-shadow: hsl(6, 70%, 34%);
+    --equals-key-background: hsl(6, 63%, 50%);
+
+    --keypad-background: hsl(30, 25%, 89%);
+    --keypad-shadow: hsl(28, 16%, 65%);
+
+    /* Text */
+    --text-keypad: hsl(221, 14%, 31%);
     --white: hsl(0, 0%, 100%);
-
-    /* Theme 2 */
+    --header-text: hsl(0, 0%, 100%);
 }
 
 body {
@@ -30,9 +36,32 @@ body {
     place-content: center;
     max-width: 100vw;
     height: 100vh;
-    background-color: var(--main-background-1);
+    background-color: var(--main-background);
     font-size: 1rem;
     font-weight: 700;
+
+    font-family: 'League Spartan', sans-serif;
+}
+
+button,
+input,
+label {
+    font-family: inherit;
+}
+
+@media (max-width: 470px) {
+    body {
+        max-width: 80vw;
+        margin: 10px auto;
+    }
+}
+
+@media (orientation:landscape) {
+    body {
+        max-width: 80vw;
+        margin: 10px auto;
+        height: fit-content;
+    }
 }
 
 button {
@@ -48,11 +77,12 @@ button {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 
-    color: var(--white);
+    color: var(--header-text);
     font-size: 0.75rem;
     margin-block: 2rem;
+    font-weight: 700;
 }
 
 .navigation-container {
@@ -64,6 +94,10 @@ button {
 
     font-size: .7rem;
     font-weight: 400;
+}
+
+.navigation-container>p {
+    padding: 5px;
 }
 
 .toggle-switch-container {
@@ -80,15 +114,135 @@ button {
 .tri-state-toggle {
     background-color: var(--screen-background);
     border-radius: 20px;
-    padding: 0 5px;
+    padding: 3px 5px;
     word-spacing: 3px;
+
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
+input {
+    height: 15px;
+    width: 15px;
+    appearance: none;
+    background-color: var(--toggle-key-background);
+    border-radius: 50px;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
 .toggle-switch {
-    background-color: var(--red-toggle-key-background);
-    color: var(--red-toggle-key-background);
+    background-color: var(--toggle-key-background);
+    color: var(--toggle-key-background);
     border: transparent;
+}
+
+.toggle-switch[data-visible="false"] {
+    opacity: 0;
+}
+
+.toggle-switch[data-visible="true"] {
+    opacity: 1;
+}
+
+/* THEMES */
+body.two {
+    --main-background: hsl(0, 0%, 90%);
+    --toggle-background-keypad: hsl(0, 5%, 81%);
+    --screen-background: hsl(0, 0%, 93%);
+
+    --del-reset-background: hsl(185, 42%, 37%);
+    --del-reset-shadow: hsl(185, 58%, 25%);
+
+    --toggle-key-background: hsl(25, 98%, 40%);
+    --equals-key-shadow: hsl(25, 99%, 27%);
+    --equals-key-background: hsl(25, 98%, 40%);
+
+    --keypad-background: hsl(45, 7%, 89%);
+    --keypad-shadow: hsl(35, 11%, 61%);
+
+    --text-keypad: hsl(60, 10%, 19%);
+    --header-text: hsl(60, 10%, 19%);
+}
+
+body.three {
+    --main-background: hsl(268, 75%, 9%);
+    --toggle-background-keypad: hsl(268, 71%, 12%);
+    --screen-background: hsl(268, 71%, 12%);
+
+    --del-reset-background: hsl(281, 89%, 26%);
+    --del-reset-shadow: hsl(285, 91%, 52%);
+
+    --toggle-key-background: hsl(176, 100%, 44%);
+    --equals-key-shadow: hsl(177, 92%, 70%);
+    --equals-key-background: hsl(176, 100%, 44%);
+
+    --keypad-background: hsl(268, 47%, 21%);
+    --keypad-shadow: hsl(290, 70%, 36%);
+
+    --text-keypad: hsl(52, 100%, 62%);
+    --header-text: hsl(52, 100%, 62%);
+}
+
+
+:root :has(#two:checked) {
+    --main-background: hsl(0, 0%, 90%);
+    --toggle-background-keypad: hsl(0, 5%, 81%);
+    --screen-background: hsl(0, 0%, 93%);
+
+    --del-reset-background: hsl(185, 42%, 37%);
+    --del-reset-shadow: hsl(185, 58%, 25%);
+
+    --toggle-key-background: hsl(25, 98%, 40%);
+    --equals-key-shadow: hsl(25, 99%, 27%);
+    --equals-key-background: hsl(25, 98%, 40%);
+
+    --keypad-background: hsl(45, 7%, 89%);
+    --keypad-shadow: hsl(35, 11%, 61%);
+
+    --text-keypad: hsl(60, 10%, 19%);
+    --header-text: hsl(60, 10%, 19%);
+}
+
+:root:has(#three:checked) {
+    --main-background: hsl(268, 75%, 9%);
+    --toggle-background-keypad: hsl(268, 71%, 12%);
+    --screen-background: hsl(268, 71%, 12%);
+
+    --del-reset-background: hsl(281, 89%, 26%);
+    --del-reset-shadow: hsl(285, 91%, 52%);
+
+    --toggle-key-background: hsl(176, 100%, 44%);
+    --equals-key-shadow: hsl(177, 92%, 70%);
+    --equals-key-background: hsl(176, 100%, 44%);
+
+    --keypad-background: hsl(268, 47%, 21%);
+    --keypad-shadow: hsl(290, 70%, 36%);
+
+    --text-keypad: hsl(52, 100%, 62%);
+    --header-text: hsl(52, 100%, 62%);
+}
+
+@media (max-width: 470px) {
+    .navigation {
+        font-size: 1.25rem;
+    }
+
+    .navigation-container {
+        font-size: .9rem;
+    }
+
+    .tri-state-toggle {
+        padding: 5px 8px;
+    }
+
+    input {
+        height: 20px;
+        width: 20px;
+    }
 }
 
 /* Main */
@@ -101,10 +255,11 @@ button {
 .display-label {
     background-color: var(--screen-background);
     padding: 1rem 1rem;
+    height: 5rem;
     border-radius: 8px;
 
     font-size: 2rem;
-    color: var(--white);
+    color: var(--header-text);
     text-align: end;
 }
 
@@ -116,7 +271,7 @@ button {
 
 .container-keypad {
     display: grid;
-    grid-template-columns: repeat(4, 80px);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-bottom: 1.5rem;
 
@@ -128,10 +283,21 @@ button {
 }
 
 .container-keypad>button {
-    box-shadow: 0px 4px 0px var(--orange-key-shadow);
-    color: var(--text-grayish-blue);
-    padding-block: 5px;
-    background-color: var(--orange-key-background);
+    box-shadow: 0px 4px 0px var(--keypad-shadow);
+    color: var(--text-keypad);
+    padding: 5px 15px;
+    background-color: var(--keypad-background);
+}
+
+@media (max-width: 470px) {
+    .container-keypad {
+        grid-template-columns: repeat(4, 4rem);
+        gap: 1rem;
+    }
+
+    .container-keypad>button {
+        padding: 1rem .5rem;
+    }
 }
 
 [data-key="7"] {
@@ -200,8 +366,8 @@ button {
 .container-keypad .delete-key {
     grid-area: del;
     color: var(--white);
-    background-color: var(--blue-key-background);
-    box-shadow: 0px 4px 0px var(--blue-key-shadow);
+    background-color: var(--del-reset-background);
+    box-shadow: 0px 4px 0px var(--del-reset-shadow);
     font-size: 1.5rem;
 }
 
@@ -219,15 +385,25 @@ button {
     grid-area: reset;
     padding-block: .5rem;
     color: var(--white);
-    background-color: var(--blue-key-background);
-    box-shadow: 0px 4px 0px var(--blue-key-shadow);
+    background-color: var(--del-reset-background);
+    box-shadow: 0px 4px 0px var(--del-reset-shadow);
     font-size: 1.5rem;
 }
 
 .equals {
     grid-area: equals;
     color: var(--white);
-    background-color: var(--red-toggle-key-background);
-    box-shadow: 0px 4px 0px var(--red-key-shadow);
+    background-color: var(--equals-key-background);
+    box-shadow: 0px 4px 0px var(--equals-key-shadow);
     font-size: 1.5rem;
+}
+
+@media (max-width: 470px) {
+    .container-button {
+        gap: 1rem;
+    }
+
+    .reset {
+        padding-block: 1.5rem;
+    }
 }
